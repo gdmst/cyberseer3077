@@ -1,0 +1,50 @@
+<title>cyber seer 3077</title>
+<link rel="stylesheet" href="../static/style.css" type="text/css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="../statics/stylebg.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<div class="overlay" id="result"><a href="#close" title="ปิดหน้าต่าง" style="text-decoration: none;">
+    
+    {% with messages = get_flashed_messages() %}
+{% if messages %}
+<div class="result">
+    <center><img src="https://images-ext-1.discordapp.net/external/ZtcdSe3Fqmub_cxEkcLvmXTuDEK6ebLhQucw2mtdduk/https/1.bp.blogspot.com/-ZBXIeq5EhyQ/WmhAiM92uNI/AAAAAAAAAtg/NvqIPAMlQGAun4j2BJN1oYzPkTtXnbD0ACLcBGAs/s1600/crystalball.png?width=467&height=467"
+        width="200" h-align="center"></center><br>
+    {% for message in messages %}
+     {{ message }}<br>
+    {% endfor %}
+</div>
+{% endif %}
+{% endwith %}</a></div>
+<div class="mycontainer">
+    <div class="fullimg">
+        <video style="width: 100%;" autoplay muted loop>
+        <source src='../video/background.mp4' type="video/mp4">
+        </video>
+    </div>
+</div>
+<div class="background">
+    <div class="box">
+        <div class="form">
+            <span class="head">Cyber Seer 3077</span><br>
+            <span>
+                You can become a seer too.<br>
+            </span>
+            <span class="detail">. . . Pick your Birthdate and see the future . . .</span>
+            <form action="" method="POST" id="form">
+            <input name="date" type="date" class="date" placeholder="date" required min="1820-01-01" max="2005-01-01" value="1999-09-09">
+            <button type="submit" class="myButton">Ukaka</button>
+        </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#form").submit(function () {
+            window.location = '#result';
+        });
+    });  
+</script>
+
