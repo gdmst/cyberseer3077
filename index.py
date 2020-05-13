@@ -15,7 +15,10 @@ class Fortune(FlaskForm):
     date = DateField('date', validators=[DataRequired()])
     @app.route("/", methods=('GET', 'POST'))
     def index():
+        
+        title=['วันเกิดของคุณคือ','ความรัก','การงาน','การเงิน','สีนำโชค']
         form = Fortune()
+        result = {}
         if request.method == 'POST':
             date = request.form['date']
             dateNo=cutd(date)
@@ -25,18 +28,14 @@ class Fortune(FlaskForm):
             colornum=random.randint(0,8)
             year= date.split('-')[0]
             resultdate =  findDay(date)+"ที่ "+checkd(dateNo)+" "+getm(xNo)+" พ.ศ. "+str(int(year)+543)
-            flash('วันเกิดของคุณคือ')
-            flash(findDay(date)+"ที่ "+checkd(dateNo)+" "+getm(xNo)+" พ.ศ. "+str(int(year)+543));
-            flash("ความรัก")
-            flash(fortuneLove())
-            flash("การงาน")
-            flash(fortuneWork())
-            flash("การเงิน")
-            flash(fortuneMoney())
-            flash("สีนำโชค")
-            flash(fortuneColor())
+            result = {'bdate': resultdate, 
+            'love': fortuneLove(),
+            'work': fortuneWork(), 
+            'money': fortuneMoney(),
+        'color': fortuneColor()
+        }
 
-        return render_template('index.html', form=form)
+        return render_template('index.html', form = form, result = result)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="127.0.0.1",port=5001)
